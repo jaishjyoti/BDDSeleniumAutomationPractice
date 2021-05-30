@@ -24,4 +24,3 @@ Test Data Used:
 
 	Credentials:-
 	> Email Address = harshitjain.qait@gmail.com
-	> Password = Qait@123
