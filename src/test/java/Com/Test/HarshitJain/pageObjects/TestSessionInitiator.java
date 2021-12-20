@@ -13,6 +13,8 @@ import Com.Test.HarshitJain.utilities.PropFileHandler;
 
 public class TestSessionInitiator {
 	
+	public static final String ContactUsPage = null;
+	///public static final String SearchProduct = null;
 	public static WebDriver driver;
 	private String browser;
 	
@@ -23,7 +25,8 @@ public class TestSessionInitiator {
 	public static SearchProductPage searchProductPage;
 	public static CheckoutPage checkoutPage;
 	public static OrderHistory orderHistory;
-
+	public static  ContactUsPage contactUsPage;
+	public static SearchProduct searchProduct;
 	public TestSessionInitiator(String browser) {
 		setBrowser(browser);
 		initialize(getBrowser());
@@ -74,6 +77,8 @@ public class TestSessionInitiator {
 		searchProductPage = new SearchProductPage(driver); 
 		checkoutPage = new CheckoutPage(driver);
 		orderHistory = new OrderHistory(driver);
+		contactUsPage = new  ContactUsPage(driver);
+		 searchProduct=new SearchProduct(driver);
 	}
 
 }

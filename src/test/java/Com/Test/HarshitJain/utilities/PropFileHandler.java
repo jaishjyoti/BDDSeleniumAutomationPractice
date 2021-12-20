@@ -11,7 +11,7 @@ public class PropFileHandler {
 	static String filePath = "Config.properties";
 	
 	public static String readProperty(String property) {
-        InputStream inPropFile = null;
+        InputStream inPropFile = null; 
         try {
             inPropFile = new FileInputStream(filePath);
             properties.load(inPropFile);

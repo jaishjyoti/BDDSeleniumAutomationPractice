@@ -24,7 +24,5 @@ public class OrderHistory extends BasePage {
 		Assert.assertTrue(orderDetails.contains(getElementWhenVisible(orderReference).getText().trim()),"Order Reference has been successfully verified");
 		Assert.assertTrue(orderDetails.contains(getElementWhenVisible(orderPrice).getText().trim()),"Order Price has been successfully verified");
 	}
-	
-	
-	
+
 }

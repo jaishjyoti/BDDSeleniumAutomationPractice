@@ -18,10 +18,10 @@ import org.testng.Assert;
 /**
  * Created by Harshit
  */
-public class BasePage {
+public class BasePage extends APIBasePage {
 
 	public WebDriver driver;
-	
+
 	public static By productToCheckout = By.xpath("(//span[contains(text(),'Proceed to checkout')])[last()]");
 	public static By successMessage = By.cssSelector("p.alert.alert-success");
 
@@ -45,8 +45,8 @@ public class BasePage {
 		}
 		return foundElement;
 	}
-	
-	protected boolean clickOnElement(By elementToken) {
+
+	protected  boolean clickOnElement(By elementToken) {
 		try {
 			WebElement el = getElementWhenVisible(elementToken);
 			el.click();
@@ -56,7 +56,7 @@ public class BasePage {
 		}
 		return false;
 	}
-	
+
 	protected boolean sendKeysOnElement(By elementToken, String text) {
 		try {
 			WebElement el = getElementWhenVisible(elementToken);
@@ -67,8 +67,8 @@ public class BasePage {
 		}
 		return false;
 	}
-	
-	
+
+
 	protected boolean selectByValueInList(By elementToken, String text) {
 		try {
 			Select s = new Select(getElementWhenVisible(elementToken));
@@ -79,12 +79,12 @@ public class BasePage {
 		}
 		return false;
 	}
-	
+
 	protected void clickOnElementViaJS(By elementToken) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", getElementWhenVisible(elementToken));
 	}
-	
+
 	protected void hoverOnElement(By elementToken) {
 		Actions ac = new Actions(driver);
 		try {
@@ -93,26 +93,26 @@ public class BasePage {
 		} catch (NullPointerException npe) {
 			fail("[UNHANDLED EXCEPTION]: " + npe.getLocalizedMessage());
 		}
-		
+
 	}
-	
+
 	protected void switchToLastWindow() {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		int n=tabs.size();
 		driver.switchTo().window(tabs.get(n-1));
 	}
-	
+
 	protected void switchToFrame(By frame) {
 		driver.switchTo().frame(getElementWhenVisible(frame));
 	}
-	
+
 	protected boolean matchPageTitle(String title) {
 		if(driver.getTitle()==title)
 			return true;
 		else
 			return false;
 	}
-	
+
 	protected boolean matchText(By elementToken,String text) {
 		try {
 			WebElement el = getElementWhenVisible(elementToken);
@@ -125,27 +125,28 @@ public class BasePage {
 		}
 		return false;
 	}
-	
+
 	public void waitToLoad(int time) {
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	protected String getPassedAttribute(By elementToken, String attribute) {
 		String attributeValue = getElementWhenVisible(elementToken).getAttribute(attribute);
 		return attributeValue;
 	}
-	
+
 	public void selectProceedToCheckout() {
 		clickOnElement(productToCheckout);
 	}
-	
+
 	public void successMsgIsDisplayed(String successMsg) {
 		Assert.assertEquals(matchText(successMessage,successMsg), true,"Personal Information has been updated Successfully");
 	}
+
+
 
 }

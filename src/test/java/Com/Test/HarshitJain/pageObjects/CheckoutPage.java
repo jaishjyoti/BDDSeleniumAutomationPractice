@@ -10,7 +10,7 @@ public class CheckoutPage extends BasePage {
 	public static By addToCart = By.cssSelector(".ajax_add_to_cart_button");
 	public static By payByCheck = By.className("cheque");
 	public static By iConfirmMyOrder = By.cssSelector("[type='submit'].button-medium");
-	public static By backToOrders = By.cssSelector("[title='Back to orders']");
+	public static By backToOrders = By.cssSelector("[title$='order history page']");
 	public static By orderDetails = By.cssSelector("div.box.order-confirmation");
 	
 	
