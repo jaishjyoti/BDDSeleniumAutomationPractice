@@ -13,7 +13,10 @@ import Com.Test.HarshitJain.pageObjects.TestSessionInitiator;
 import Com.Test.HarshitJain.utilities.PropFileHandler;		
 
 public class StepDef {
-	String firstItemText;
+	//String storeFirstItemText;
+	//String getText;
+	//String firstItemText;
+	String message;
 	String text;
 	String detail;
 	String orderDetails;
@@ -75,7 +78,7 @@ public class StepDef {
 	public void proceed_to_checkout_addresses(){		
 		TestSessionInitiator.checkoutPage.selectProceedToCheckout();
 		TestSessionInitiator.checkoutPage.selectProceedToCheckout();
-		
+
 	}
 
 	@When("^I agree to Terms of service checkbox$")				
@@ -134,14 +137,14 @@ public class StepDef {
 	public void verify_get_request(String code){
 		Assert.assertEquals(statusCode, Integer.parseInt(code));
 	}
-	
+
 	@When("^I hit post request to create a post$")			
 	public void send_post_request(){	
 		response = TestSessionInitiator.homePage.postRequest(baseApiURL+"posts",TestSessionInitiator.homePage.createBody("harshit","This is sample post request",2));
 		statusCode = response.getStatusCode();
 		System.out.println("Post status code is  >>  " + response.getStatusCode());
 	}
-	
+
 	@When("^I hit post request with invalid body$")
 	public void send_invalid_post_request(){	
 		response = TestSessionInitiator.homePage.postRequest(baseApiURL+"posts","invalid body");
@@ -159,43 +162,90 @@ public class StepDef {
 	@When("I select 'Subject Heading' box")
 	public void selectSubjectBox() {
 		TestSessionInitiator.contactUsPage.subjectHeading();
-    } 
-     @When("I select 'Order reference' box")
-     public void selectOrderReferenceBox() {
-     TestSessionInitiator.contactUsPage.orderReference();
+	} 
+	@When("I select 'Order reference' box")
+	public void selectOrderReferenceBox() {
+		TestSessionInitiator.contactUsPage.orderReference();
 	}
-     @And("I add file in 'Attach File' box")
-    public void selectAttachFile() {
-    	TestSessionInitiator.contactUsPage.attachFile();
-     }
-     @When("I write message in 'Message' box")
-     public void selectMessageBox() {
-    	 TestSessionInitiator.contactUsPage.messageBox();
-     }
-     @When("I click on 'Send' button")
-     public void selectSendBox() {
-    	 TestSessionInitiator.contactUsPage.sendButton();
-     }
-     @Then("I verify message after success 'Contact us details'")
-     public void verifyContactUsDetail() {
-    	 TestSessionInitiator.contactUsPage.verifyContactUsDetails(detail);		
-     }
-     @When ("I search product")
-     public void iSearchProduct() {
-    	 TestSessionInitiator.searchProduct.textToBeSearched();
-     }
-     @Then("I verify search text")
-     public void verifySearchText() {
+	@And("I add file in 'Attach File' box")
+	public void selectAttachFile() {
+		TestSessionInitiator.contactUsPage.attachFile();
+	}
+	@When("I write message in 'Message' box")
+	public void selectMessageBox() {
+		TestSessionInitiator.contactUsPage.messageBox();
+	}
+	@When("I click on 'Send' button")
+	public void selectSendBox() {
+		TestSessionInitiator.contactUsPage.sendButton();
+	}
+	@Then("I verify message after success 'Contact us details'")
+	public void verifyContactUsDetail() {
+		TestSessionInitiator.contactUsPage.verifyContactUsDetails(detail);		
+	}
+	@When ("I search a  product")
+	public void iSearchProduct() {
+		TestSessionInitiator.searchProduct.textToBeSearched();
+	}
+	@Then("I verify searched product")
+	public void verifySearchedText() {
 
 		TestSessionInitiator.searchProduct.verifySearchText(text);
-     }
-     @When("I select first item text")
-     public void selectFirstItemText() {
-    	 TestSessionInitiator.searchProduct.searchedFirstItem();
-    	 
-     }
-     @Then("I verify first item text")
-     public  void verifyFirstItemText() {
-    	 TestSessionInitiator.searchProduct.verifyFirstItemText(firstItemText);
-    }
-     }
+	}
+	@When("I get first product name")
+	public void getFistProductName()
+	{
+		TestSessionInitiator.searchProduct.getFirstProductName();
+	}
+	@When("I select first product")
+	public void selectFirstProduct() {
+		TestSessionInitiator.searchProduct. selectFirstProduct(); 
+	}
+	@Then("I get product name after select first product")
+	public  void iGetProductNameAfteClick() {
+		TestSessionInitiator.searchProduct.getProductNameAfterClick();
+	}
+	@When("I verify product name")
+	public void iVerifyProductName() {
+		TestSessionInitiator.searchProduct.verifyProductName();
+	}
+	@When("I verify page title")
+	public void iVerifyPageTitle()
+	{
+		TestSessionInitiator.searchProduct.verifyTitle();
+
+	}@When("I check follow us text present in global footer or not")
+
+	public void textIsPresentOrNot() {
+		TestSessionInitiator.presentOrNot.checkTextPresentInGlobalFooter();
+	}
+	@When("I click fb link from global footer")
+	public void clickOnfblogo() {
+		TestSessionInitiator.presentOrNot.clickOnFb();
+		
+	}@When("I click  twitter link from global footer")
+	public void clickOnTwitterLogo() {
+		TestSessionInitiator.presentOrNot.clickOnTwitter();
+		
+	}@When("I click prestashop link from global footer")
+	public void clickOnPrestashop() {
+		TestSessionInitiator.presentOrNot.clickOnPrestaShop();
+	}
+	@When("I click google link from global footer")
+	public void clickOnGoogle() {
+		TestSessionInitiator.presentOrNot.clickOnGoogle();
+		
+	}@And("I Check  Enter your e-mail placeholder is present or not")
+	public void checkNewLetterTextplaceholder() {
+		TestSessionInitiator.presentOrNot.checkTextNewsletterPresentInGlobalFooter();
+	}
+	 @And("I Check Newsletter text is present in Global footer or not")
+	public void  iCheckletterTextPresentOrNot (){
+		TestSessionInitiator.presentOrNot.checkEnterYourEmailText();
+	}@Then("I verify subscribe message")
+	public void verifySubcribeMsg() {
+		TestSessionInitiator.presentOrNot.verifyNewsletterPlaceholder(message);
+		
+	}
+	 
+}

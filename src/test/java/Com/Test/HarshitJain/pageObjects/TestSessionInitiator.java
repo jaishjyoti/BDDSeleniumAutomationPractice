@@ -27,6 +27,7 @@ public class TestSessionInitiator {
 	public static OrderHistory orderHistory;
 	public static  ContactUsPage contactUsPage;
 	public static SearchProduct searchProduct;
+	public static GlobalHeaderAndFooterPresentOrNot presentOrNot;
 	public TestSessionInitiator(String browser) {
 		setBrowser(browser);
 		initialize(getBrowser());
@@ -79,6 +80,7 @@ public class TestSessionInitiator {
 		orderHistory = new OrderHistory(driver);
 		contactUsPage = new  ContactUsPage(driver);
 		 searchProduct=new SearchProduct(driver);
+		 presentOrNot=new GlobalHeaderAndFooterPresentOrNot(driver);
 	}
 
 }

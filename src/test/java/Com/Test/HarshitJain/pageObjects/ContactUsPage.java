@@ -48,7 +48,7 @@ public class ContactUsPage  extends BasePage{
 		clickOnElement(sendButton);
 		
 	}
-	public void verifyContactUsDetails(String detail) {
+	public void verifyContactUsDetails(String message) {
 		Assert.assertEquals(getElementWhenVisible(verifyMessage).getText(),"Your message has been successfully sent to our team.");
 		
 
